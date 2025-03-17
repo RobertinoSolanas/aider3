@@ -1,5 +1,5 @@
 # Use official maven/Java 21 image to build the application
-FROM maven:3.8.6-openjdk-21 AS build
+FROM docker.io/library/maven:3.8.6-openjdk-21 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use official OpenJDK runtime as a parent image
-FROM openjdk:21-jdk-slim
+FROM docker.io/library/openjdk:21-jdk-slim
 
 # Set the working directory
 WORKDIR /app
