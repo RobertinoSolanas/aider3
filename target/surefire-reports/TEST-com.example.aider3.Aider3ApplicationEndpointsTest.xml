@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.aider3.Aider3ApplicationTests" time="0.152" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.aider3.Aider3ApplicationEndpointsTest" time="1.376" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -60,10 +60,10 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[aider3] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.example.aider3.Aider3ApplicationTests" time="0.002">
-    <system-out><![CDATA[2025-03-17T18:52:35.286+01:00  INFO 84040 --- [aider3] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.aider3.Aider3ApplicationTests]: Aider3ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-03-17T18:52:35.288+01:00  INFO 84040 --- [aider3] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.aider3.Aider3Application for test class com.example.aider3.Aider3ApplicationTests
-2025-03-17T18:52:35.291+01:00  INFO 84040 --- [aider3] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="testEchoEndpoint" classname="com.example.aider3.Aider3ApplicationEndpointsTest" time="0.418">
+    <system-out><![CDATA[18:52:33.972 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.aider3.Aider3ApplicationEndpointsTest]: Aider3ApplicationEndpointsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:52:34.032 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.aider3.Aider3Application for test class com.example.aider3.Aider3ApplicationEndpointsTest
+18:52:34.103 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -74,9 +74,19 @@
 
  :: Spring Boot ::                (v3.4.3)
 
-2025-03-17T18:52:35.307+01:00  INFO 84040 --- [aider3] [           main] c.example.aider3.Aider3ApplicationTests  : Starting Aider3ApplicationTests using Java 21.0.6 with PID 84040 (started by rob in /home/rob/Documents/development/aider/aider3)
-2025-03-17T18:52:35.308+01:00  INFO 84040 --- [aider3] [           main] c.example.aider3.Aider3ApplicationTests  : No active profile set, falling back to 1 default profile: "default"
-2025-03-17T18:52:35.432+01:00  INFO 84040 --- [aider3] [           main] c.example.aider3.Aider3ApplicationTests  : Started Aider3ApplicationTests in 0.141 seconds (process running for 1.757)
+2025-03-17T18:52:34.252+01:00  INFO 84040 --- [aider3] [           main] c.e.a.Aider3ApplicationEndpointsTest     : Starting Aider3ApplicationEndpointsTest using Java 21.0.6 with PID 84040 (started by rob in /home/rob/Documents/development/aider/aider3)
+2025-03-17T18:52:34.253+01:00  INFO 84040 --- [aider3] [           main] c.e.a.Aider3ApplicationEndpointsTest     : No active profile set, falling back to 1 default profile: "default"
+2025-03-17T18:52:34.828+01:00  INFO 84040 --- [aider3] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-17T18:52:34.829+01:00  INFO 84040 --- [aider3] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-17T18:52:34.830+01:00  INFO 84040 --- [aider3] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-03-17T18:52:34.844+01:00  INFO 84040 --- [aider3] [           main] c.e.a.Aider3ApplicationEndpointsTest     : Started Aider3ApplicationEndpointsTest in 0.746 seconds (process running for 1.169)
 ]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/rob/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
   </testcase>
+  <testcase name="testHelloEndpoint" classname="com.example.aider3.Aider3ApplicationEndpointsTest" time="0.006"/>
 </testsuite>
