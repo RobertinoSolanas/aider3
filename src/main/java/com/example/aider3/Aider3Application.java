@@ -3,6 +3,7 @@ package com.example.aider3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -16,5 +17,10 @@ public class Aider3Application {
 	@GetMapping("/hello")
 	public String hello() {
 		return "Hello from Aider3!";
+	}
+
+	@GetMapping("/echo")
+	public String echo(@RequestParam String value) {
+		return value;
 	}
 }
