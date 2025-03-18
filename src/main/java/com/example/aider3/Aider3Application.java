@@ -15,7 +15,7 @@ public class Aider3Application {
 	}
 
 	@GetMapping("/hello")
-	public String hello() {
+	public String hello2() {
 		return "Hello from Aider3!";
 	}
 
