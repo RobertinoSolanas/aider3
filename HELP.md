@@ -28,3 +28,6 @@ If you manually switch to a different parent and actually want the inheritance, 
 # source /home/rob/Documents/development/java/java_venv/bin/activate
 # export DEEPSEEK_API_KEY="sk-239fb6b815c041b3bde2967040703b51"
 # aider --model deepseek/deepseek-chat
+# git add .
+# git commit -m "spring-boot"
+# git push
