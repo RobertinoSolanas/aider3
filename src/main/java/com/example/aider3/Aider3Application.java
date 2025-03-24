@@ -14,7 +14,7 @@ public class Aider3Application {
 		SpringApplication.run(Aider3Application.class, args);
 	}
 
-	@GetMapping("/hello")
+	@GetMapping("/hello2")
 	public String hello2() {
 		return "Hello from Aider3!";
 	}

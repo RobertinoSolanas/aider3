@@ -23,7 +23,7 @@ While most of the inheritance is fine, it also inherits unwanted elements like `
 To prevent this, the project POM contains empty overrides for these elements.
 If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
 
-# podman run -p 8080:8080 9f234c2ea014
+# podman run -p 8080:8080 docker.io/library/aider3:latest
 
 # source /home/rob/Documents/development/java/java_venv/bin/activate
 # export DEEPSEEK_API_KEY="sk-239fb6b815c041b3bde2967040703b51"
@@ -31,3 +31,4 @@ If you manually switch to a different parent and actually want the inheritance, 
 # git add .
 # git commit -m "spring-boot"
 # git push
+# mvn clean package docker:build
