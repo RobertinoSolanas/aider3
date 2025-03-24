@@ -1,18 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aider Application</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1 { color: #333; }
-        .content { margin: 20px 0; }
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --bg-color: #f9fafb;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Aider</h1>
-    <div class="content">
-        <p>Simple HTML page for Aider application.</p>
-    </div>
+    <header>
+        <h1>Aider Application</h1>
+        <p>Modern web interface for your Kubernetes management</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Deployments</h2>
+            <p>Manage your Kubernetes deployments with ease</p>
+            <ul>
+                <li>View running instances</li>
+                <li>Scale applications</li>
+                <li>Monitor health status</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Services</h2>
+            <p>Configure and monitor your services</p>
+            <ul>
+                <li>Load balancer configuration</li>
+                <li>Port mappings</li>
+                <li>Service discovery</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Namespaces</h2>
+            <p>Organize your cluster resources</p>
+            <ul>
+                <li>Create and manage namespaces</li>
+                <li>Resource quotas</li>
+                <li>Access controls</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aider Application | Version 1.0.0</p>
+    </footer>
 </body>
 </html>
