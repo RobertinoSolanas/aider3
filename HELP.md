@@ -30,3 +30,21 @@ If you manually switch to a different parent and actually want the inheritance, 
 # git commit -m "spring-boot"
 # git push
 # mvn clean package docker:build
+# ---- microk8s connect local registry ----
+# 1 First, enable the registry 
+# add-on:                                                                                        
+                                                                                                                         
+microk8s enable registry                                                                                                     
+                                                                                                                             
+
+This will:                                                                                                                   
+
+ • Start a local container registry on port 32000                                                                            
+ • Configure MicroK8s to use this registry                                                                                   
+ • Set up the necessary Kubernetes resources                                                                                 
+
+ 2 Verify it's running:                                                                                                      
+
+                                                                                                                             
+microk8s kubectl get pods -n container-registry                                                                              
+                                                                                              
