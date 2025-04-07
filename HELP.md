@@ -25,6 +25,7 @@ If you manually switch to a different parent and actually want the inheritance, 
 
 # podman run -p 8080:8080 docker.io/library/aider3:latest
 # source /home/rob/Documents/development/java/java_venv/bin/activate
+# export DEEPSEEK_API_KEY=
 # aider --model deepseek/deepseek-chat
 # git add .
 # git commit -m "spring-boot"
