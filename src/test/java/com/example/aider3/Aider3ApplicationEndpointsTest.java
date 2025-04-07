@@ -19,7 +19,7 @@ public class Aider3ApplicationEndpointsTest {
 
     @Test
     public void testHelloEndpoint() throws Exception {
-        mockMvc.perform(get("/hello2"))
+        mockMvc.perform(get("/hello3"))
                .andExpect(status().isOk())
                .andExpect(content().string("Hello from Aider3!"));
     }
