@@ -4,7 +4,7 @@ target/
 # Compiled class file
 *.class
 
-# Compiled class file
+# Local Configs
 config.txt
 
 # Log file
