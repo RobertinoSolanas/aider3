@@ -23,29 +23,25 @@ While most of the inheritance is fine, it also inherits unwanted elements like `
 To prevent this, the project POM contains empty overrides for these elements.
 If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
 
-# podman run -p 8080:8080 docker.io/library/aider3:latest
+# AIDER
 # source /home/rob/Documents/development/java/java_venv/bin/activate
 # export DEEPSEEK_API_KEY=
 # aider --model deepseek/deepseek-chat
+
+# GIT
 # git add .
 # git commit -m "spring-boot"
 # git push
+
+# Build application
 # mvn clean package docker:build
+
+# Start application
 # ---- microk8s connect local registry ----
 # 1 First, enable the registry 
 # add-on:                                                                                        
-                                                                                                                         
-microk8s enable registry                                                                                                     
-                                                                                                                             
 
-This will:                                                                                                                   
-
- • Start a local container registry on port 32000                                                                            
- • Configure MicroK8s to use this registry                                                                                   
- • Set up the necessary Kubernetes resources                                                                                 
-
- 2 Verify it's running:                                                                                                      
-
-                                                                                                                             
-microk8s kubectl get pods -n container-registry                                                                              
+# microk8s Config
+# microk8s enable registr
+# microk8s kubectl get pods -n container-registry
                                                                                               
