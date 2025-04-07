@@ -4,6 +4,9 @@ target/
 # Compiled class file
 *.class
 
+# Compiled class file
+config.txt
+
 # Log file
 *.log
 
