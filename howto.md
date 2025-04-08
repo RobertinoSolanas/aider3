@@ -107,6 +107,7 @@ If you manually switch to a different parent and actually want the inheritance, 
 mvn clean package docker:build
 
 # GIT
+git status
 git add .
 git commit -m "spring-boot"
 git push
