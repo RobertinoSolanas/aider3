@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = {Aider3Rest.class})
 @AutoConfigureMockMvc
-public class Aider3ApplicationEndpointsTest {
+public class Aider3RestTest {
 
     @Autowired
     private MockMvc mockMvc;
