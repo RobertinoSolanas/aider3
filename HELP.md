@@ -33,6 +33,10 @@ If you manually switch to a different parent and actually want the inheritance, 
 # git commit -m "spring-boot"
 # git push
 
+# spring-boot
+# mvn clean install
+# mvn spring-boot:run
+
 # Build application
 # mvn clean package docker:build
 
