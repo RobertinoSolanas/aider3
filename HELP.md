@@ -37,7 +37,10 @@ If you manually switch to a different parent and actually want the inheritance, 
 # mvn clean install
 # mvn spring-boot:run
 
-# Build application
+# application
+# http://localhost:8081/api/swagger-ui.html
+
+# Build application as contianer
 # mvn clean package docker:build
 
 # Start application
