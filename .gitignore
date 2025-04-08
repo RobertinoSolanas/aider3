@@ -1,6 +1,10 @@
 # Maven target directory
 target/
 
+#vs code
+.vscode/
+
+
 # Compiled class file
 *.class
 
