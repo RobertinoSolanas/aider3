@@ -9,20 +9,61 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     @ExceptionHandler(InvalidMoveException.class)
-    public ResponseEntity<ProblemDetail> handleInvalidMove(InvalidMoveException ex) {
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
-                HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage());
-        problem.setTitle("Invalid Move");
-        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(problem);
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ApiResponse(
+        responseCode = "422",
+        description = "Invalid Move",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class)))
+    public ResponseEntity<ApiErrorResponse> handleInvalidMove(InvalidMoveException ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .body(ApiErrorResponse.builder()
+                        .status(HttpStatus.UNPROCESSABLE_ENTITY.value())
+                        .timestamp(LocalDateTime.now())
+                        .message("Invalid Move")
+                        .details(ex.getMessage())
+                        .build());
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<ProblemDetail> handleConstraintViolation(ConstraintViolationException ex) {
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
-                HttpStatus.BAD_REQUEST, ex.getMessage());
-        problem.setTitle("Validation Error");
-        return ResponseEntity.badRequest().body(problem);
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ApiResponse(
+        responseCode = "400",
+        description = "Validation Error",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class)))
+    public ResponseEntity<ApiErrorResponse> handleConstraintViolation(ConstraintViolationException ex) {
+        return ResponseEntity
+                .badRequest()
+                .body(ApiErrorResponse.builder()
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .timestamp(LocalDateTime.now())
+                        .message("Validation Error")
+                        .details(ex.getConstraintViolations().iterator().next().getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ApiResponse(
+        responseCode = "500",
+        description = "Internal Server Error",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ApiErrorResponse.class)))
+    public ResponseEntity<ApiErrorResponse> handleAllExceptions(Exception ex) {
+        return ResponseEntity
+                .internalServerError()
+                .body(ApiErrorResponse.builder()
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        .timestamp(LocalDateTime.now())
+                        .message("Internal Server Error")
+                        .details(ex.getMessage())
+                        .build());
     }
 }

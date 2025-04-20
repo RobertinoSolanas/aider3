@@ -9,14 +9,20 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "Aider3 API", description = "Simple demonstration endpoints")
+@Tag(name = "Utility API", description = "Utility endpoints for service health and testing")
 public class Aider3Rest {
 
     @Operation(
-        summary = "Get greeting",
-        description = "Returns a friendly greeting message",
+        summary = "Get service greeting",
+        description = "Returns a greeting message to verify service is running",
         responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation")
+            @ApiResponse(
+                responseCode = "200",
+                description = "Successful operation",
+                content = @Content(
+                    mediaType = "text/plain",
+                    schema = @Schema(implementation = String.class),
+                examples = @ExampleObject(value = "Hello from Aider3!"))
         })
     @GetMapping("/hello3")
     public String hello3() {
@@ -25,14 +31,40 @@ public class Aider3Rest {
 
     @Operation(
         summary = "Echo input",
-        description = "Returns the exact string that was provided as input",
+        description = "Echoes back the input string for testing purposes",
         responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation")
+            @ApiResponse(
+                responseCode = "200",
+                description = "Successful operation",
+                content = @Content(
+                    mediaType = "text/plain",
+                    schema = @Schema(implementation = String.class))
         })
     @GetMapping("/echo")
     public String echo(
-        @Parameter(description = "The string to echo back", example = "Hello World2!")
+        @Parameter(
+            description = "Input string to echo back",
+            required = true,
+            example = "Hello World!",
+            schema = @Schema(type = "string", minLength = 1))
         @RequestParam String value) {
         return value;
+    }
+
+    @Operation(
+        summary = "Service health check",
+        description = "Simple endpoint to verify service availability",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Service is healthy",
+                content = @Content(
+                    mediaType = "text/plain",
+                    schema = @Schema(implementation = String.class),
+                examples = @ExampleObject(value = "OK"))
+        })
+    @GetMapping("/health")
+    public String health() {
+        return "OK";
     }
 }
