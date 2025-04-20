@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -22,7 +25,7 @@ public class Aider3Rest {
                 content = @Content(
                     mediaType = "text/plain",
                     schema = @Schema(implementation = String.class),
-                examples = @ExampleObject(value = "Hello from Aider3!"))
+                examples = @ExampleObject(value = "Hello from Aider3!")))
         })
     @GetMapping("/hello3")
     public String hello3() {
@@ -38,7 +41,7 @@ public class Aider3Rest {
                 description = "Successful operation",
                 content = @Content(
                     mediaType = "text/plain",
-                    schema = @Schema(implementation = String.class))
+                    schema = @Schema(implementation = String.class))))
         })
     @GetMapping("/echo")
     public String echo(
@@ -61,7 +64,7 @@ public class Aider3Rest {
                 content = @Content(
                     mediaType = "text/plain",
                     schema = @Schema(implementation = String.class),
-                examples = @ExampleObject(value = "OK"))
+                examples = @ExampleObject(value = "OK"))))
         })
     @GetMapping("/health")
     public String health() {
