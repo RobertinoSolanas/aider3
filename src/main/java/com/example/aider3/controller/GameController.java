@@ -18,15 +18,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name = "Checkers Game API", description = "API for managing checkers games")
 public class GameController {
-    private final GameService gameService;
+    private final FourCheckerBoardGameService gameService;
 
     @PostMapping
-    @Operation(summary = "Create a new game",
+    @Operation(summary = "Create a new 4x4 checkers game",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Game created"),
                     @ApiResponse(responseCode = "400", description = "Invalid input")
             })
-    public ResponseEntity<Game> createGame(
+    public ResponseEntity<FourCheckerBoardGame> createGame(
             @Parameter(description = "Player names") 
             @RequestParam(required = false) String playerWhite,
             @RequestParam(required = false) String playerBlack) {
@@ -34,10 +34,10 @@ public class GameController {
     }
 
     @GetMapping
-    @Operation(summary = "List games by status")
-    public ResponseEntity<List<Game>> listGames(
+    @Operation(summary = "List 4x4 checkers games by status")
+    public ResponseEntity<List<FourCheckerBoardGame>> listGames(
             @Parameter(description = "Game status filter") 
-            @RequestParam(required = false) Game.GameStatus status) {
+            @RequestParam(required = false) FourCheckerBoardGame.GameStatus status) {
         return ResponseEntity.ok(gameService.listGames(status));
     }
 
