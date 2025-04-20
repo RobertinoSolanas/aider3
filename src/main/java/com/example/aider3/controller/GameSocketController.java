@@ -33,12 +33,40 @@ public class GameSocketController {
         private String from;
         private String to;
 
-        // Getters and setters
+        public Long getGameId() {
+            return gameId;
+        }
+
+        public void setGameId(Long gameId) {
+            this.gameId = gameId;
+        }
+
+        public String getFrom() {
+            return from;
+        }
+
+        public void setFrom(String from) {
+            this.from = from;
+        }
+
+        public String getTo() {
+            return to;
+        }
+
+        public void setTo(String to) {
+            this.to = to;
+        }
     }
 
     public static class ResignRequest {
         private Long gameId;
 
-        // Getters and setters
+        public Long getGameId() {
+            return gameId;
+        }
+
+        public void setGameId(Long gameId) {
+            this.gameId = gameId;
+        }
     }
 }
