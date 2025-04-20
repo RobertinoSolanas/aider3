@@ -41,7 +41,9 @@ public class Aider3Rest {
                 description = "Successful operation",
                 content = @Content(
                     mediaType = "text/plain",
-                    schema = @Schema(implementation = String.class))))
+                    schema = @Schema(implementation = String.class)
+                )
+            )
         })
     @GetMapping("/echo")
     public String echo(
@@ -64,7 +66,9 @@ public class Aider3Rest {
                 content = @Content(
                     mediaType = "text/plain",
                     schema = @Schema(implementation = String.class),
-                examples = @ExampleObject(value = "OK"))))
+                    examples = @ExampleObject(value = "OK")
+                )
+            )
         })
     @GetMapping("/health")
     public String health() {
