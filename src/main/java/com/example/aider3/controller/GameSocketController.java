@@ -1,7 +1,7 @@
 package com.example.aider3.controller;
 
-import com.example.aider3.model.Game;
-import com.example.aider3.service.GameService;
+import com.example.aider3.model.FourCheckerBoardGame;
+import com.example.aider3.service.FourCheckerBoardGameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;

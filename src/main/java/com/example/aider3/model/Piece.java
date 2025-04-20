@@ -20,18 +20,19 @@ public class Piece {
     private PieceType type;
     
     @Enumerated(EnumType.STRING)
-    private Game.Color color;
+    private FourCheckerBoardGame.Color color;
     
     @ManyToOne
     @JoinColumn(name = "game_id")
-    private Game game;
+    private FourCheckerBoardGame game;
 
     public enum PieceType {
         REGULAR, KING
     }
 
     // Helper method to get opponent color
-    public Game.Color getOpponentColor() {
-        return this.color == Game.Color.WHITE ? Game.Color.BLACK : Game.Color.WHITE;
+    public FourCheckerBoardGame.Color getOpponentColor() {
+        return this.color == FourCheckerBoardGame.Color.WHITE ? 
+               FourCheckerBoardGame.Color.BLACK : FourCheckerBoardGame.Color.WHITE;
     }
 }

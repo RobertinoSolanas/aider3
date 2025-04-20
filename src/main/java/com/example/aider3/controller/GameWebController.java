@@ -1,7 +1,7 @@
 package com.example.aider3.controller;
 
-import com.example.aider3.model.Game;
-import com.example.aider3.service.GameService;
+import com.example.aider3.model.FourCheckerBoardGame;
+import com.example.aider3.service.FourCheckerBoardGameService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
