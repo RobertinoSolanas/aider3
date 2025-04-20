@@ -21,7 +21,7 @@ public class Game {
     @Enumerated(EnumType.STRING)
     private GameStatus status;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game", fetch = FetchType.EAGER)
     private List<Piece> pieces;
     
     @Enumerated(EnumType.STRING)
