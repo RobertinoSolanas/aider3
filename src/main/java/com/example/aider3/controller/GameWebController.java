@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/web/games")
 public class GameWebController {
-    private final GameService gameService;
+    private final FourCheckerBoardGameService gameService;
 
-    public GameWebController(GameService gameService) {
+    public GameWebController(FourCheckerBoardGameService gameService) {
         this.gameService = gameService;
     }
 
@@ -31,7 +31,7 @@ public class GameWebController {
             @RequestParam String playerWhite,
             @RequestParam String playerBlack,
             Model model) {
-        Game game = gameService.createGame(playerWhite, playerBlack);
+        FourCheckerBoardGame game = gameService.createGame(playerWhite, playerBlack);
         return "redirect:/web/games/" + game.getId();
     }
 
