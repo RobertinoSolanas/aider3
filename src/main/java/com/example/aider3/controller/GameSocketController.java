@@ -26,9 +26,8 @@ public class GameSocketController {
 
     @MessageMapping("/game/resign")
     @SendTo("/topic/game/{gameId}")
-    public Game resignGame(ResignRequest resignRequest) {
-        // TODO: Implement resign logic
-        return gameService.getGameById(resignRequest.getGameId());
+    public FourCheckerBoardGame resignGame(ResignRequest resignRequest) {
+        return gameService.resignGame(resignRequest.getGameId(), "TODO: player name");
     }
 
     public static class MoveRequest {
