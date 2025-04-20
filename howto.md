@@ -111,4 +111,5 @@ git status
 git add .
 git commit -m "spring-boot"
 git push
+git reset --hard HEAD 
 ```
