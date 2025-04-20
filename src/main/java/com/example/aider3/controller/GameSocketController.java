@@ -8,17 +8,20 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class GameSocketController {
-    private final GameService gameService;
+    private final FourCheckerBoardGameService gameService;
 
-    public GameSocketController(GameService gameService) {
+    public GameSocketController(FourCheckerBoardGameService gameService) {
         this.gameService = gameService;
     }
 
     @MessageMapping("/game/move")
     @SendTo("/topic/game/{gameId}")
-    public Game makeMove(MoveRequest moveRequest) {
-        // TODO: Implement move validation
-        return gameService.getGameById(moveRequest.getGameId());
+    public FourCheckerBoardGame makeMove(MoveRequest moveRequest) {
+        return gameService.makeMove(
+            moveRequest.getGameId(),
+            moveRequest.getFrom(),
+            moveRequest.getTo()
+        );
     }
 
     @MessageMapping("/game/resign")
