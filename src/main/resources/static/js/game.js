@@ -17,13 +17,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize board
+    // Initialize 4x4 board
     function initBoard() {
         board.innerHTML = '';
-        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        const letters = ['a', 'b', 'c', 'd'];
         
-        for (let row = 8; row >= 1; row--) {
-            for (let col = 0; col < 8; col++) {
+        // Create column labels
+        const colLabels = document.createElement('div');
+        colLabels.className = 'col-labels';
+        letters.forEach(letter => {
+            const label = document.createElement('span');
+            label.textContent = letter;
+            colLabels.appendChild(label);
+        });
+        board.appendChild(colLabels);
+
+        // Create board squares
+        for (let row = 4; row >= 1; row--) {
+            // Row label
+            const rowLabel = document.createElement('span');
+            rowLabel.className = 'row-label';
+            rowLabel.textContent = row;
+            board.appendChild(rowLabel);
+            
+            // Squares
+            for (let col = 0; col < 4; col++) {
                 const square = document.createElement('div');
                 square.className = `square ${(row + col) % 2 === 0 ? 'light' : 'dark'}`;
                 square.id = `${letters[col]}${row}`;
@@ -34,6 +52,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 board.appendChild(square);
             }
         }
+    }
+
+    // Validate 4x4 checker moves
+    function isValidMove(from, to) {
+        const fromCol = from.charCodeAt(0) - 97; // a=0, b=1, etc.
+        const fromRow = parseInt(from.charAt(1));
+        const toCol = to.charCodeAt(0) - 97;
+        const toRow = parseInt(to.charAt(1));
+        
+        // Basic move validation for 4x4 checkers
+        const colDiff = Math.abs(toCol - fromCol);
+        const rowDiff = toRow - fromRow;
+        
+        // White moves up (row increases), Black moves down (row decreases)
+        const direction = game.currentTurn === 'WHITE' ? 1 : -1;
+        
+        return colDiff === 1 && rowDiff === direction;
     }
 
     function handleSquareClick(event) {
@@ -69,23 +104,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateGameState(game) {
         // Update game info
-        document.querySelector('.game-info div:nth-child(3) span').textContent = game.status;
-        document.querySelector('.game-info div:nth-child(4) span').textContent = game.currentTurn;
+        document.querySelector('.status').textContent = game.status;
+        
+        // Update turn indicators
+        document.querySelectorAll('.turn-indicator').forEach(el => {
+            el.classList.remove('active');
+        });
+        const currentTurnIndicator = document.querySelector(
+            `.${game.currentTurn.toLowerCase()}-player .turn-indicator`);
+        if (currentTurnIndicator) {
+            currentTurnIndicator.classList.add('active');
+        }
 
         // Update board
         clearBoard();
-        game.pieces.forEach(piece => {
-            const square = document.getElementById(piece.position);
-            if (square) {
-                const pieceDiv = document.createElement('div');
-                pieceDiv.className = `piece ${piece.color.toLowerCase()}`;
-                pieceDiv.id = piece.position;
-                if (piece.type === 'KING') {
-                    pieceDiv.classList.add('king');
+        if (game.pieces) {
+            game.pieces.forEach(piece => {
+                const square = document.getElementById(piece.position);
+                if (square) {
+                    const pieceDiv = document.createElement('div');
+                    pieceDiv.className = `piece ${piece.color.toLowerCase()}`;
+                    pieceDiv.id = piece.position;
+                    if (piece.king) {
+                        pieceDiv.classList.add('king');
+                    }
+                    square.appendChild(pieceDiv);
                 }
-                square.appendChild(pieceDiv);
-            }
-        });
+            });
+        }
+
+        // Update move history
+        if (game.moves) {
+            const moveHistory = document.getElementById('move-history');
+            moveHistory.innerHTML = '<h3>Move History</h3>';
+            game.moves.forEach(move => {
+                const moveEl = document.createElement('div');
+                moveEl.className = 'move';
+                moveEl.textContent = `${move.player}: ${move.from} → ${move.to}`;
+                moveHistory.appendChild(moveEl);
+            });
+        }
     }
 
     function clearBoard() {
