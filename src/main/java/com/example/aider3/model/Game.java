@@ -2,6 +2,7 @@ package com.example.aider3.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import java.util.List;
 
 @Entity
@@ -9,7 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

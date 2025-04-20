@@ -2,25 +2,15 @@ package com.example.aider3.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.List;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@SuperBuilder
 public class FourCheckerBoardGame extends Game {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     
-    
-    public enum GameStatus {
-        ACTIVE, FINISHED
-    }
-    
-
     public boolean isPositionValid(String position) {
         if (position == null || position.length() != 2) {
             return false;
