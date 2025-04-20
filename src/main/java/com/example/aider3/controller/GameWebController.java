@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/web/games")
 public class GameWebController {
     private final FourCheckerBoardGameService gameService;
 
@@ -15,29 +14,21 @@ public class GameWebController {
         this.gameService = gameService;
     }
 
-    @GetMapping
-    public String listGames(Model model) {
-        model.addAttribute("games", gameService.listGames(null));
-        return "games/list";
-    }
-
-    @GetMapping("/new")
-    public String newGameForm(Model model) {
-        return "games/new";
-    }
-
-    @PostMapping
-    public String createGame(
-            @RequestParam String playerWhite,
-            @RequestParam String playerBlack,
+    @GetMapping("/play")
+    public String handleGameRequest(
+            @RequestParam(required = false) Long gameId,
+            @RequestParam(defaultValue = "Player1") String player1,
+            @RequestParam(defaultValue = "Player2") String player2,
             Model model) {
-        FourCheckerBoardGame game = gameService.createGame(playerWhite, playerBlack);
-        return "redirect:/web/games/" + game.getId();
-    }
-
-    @GetMapping("/{id}")
-    public String viewGame(@PathVariable Long id, Model model) {
-        model.addAttribute("game", gameService.getGameById(id));
+        
+        if (gameId == null) {
+            // Create new game with default or provided player names
+            FourCheckerBoardGame newGame = gameService.createGame(player1, player2);
+            return "redirect:/play?gameId=" + newGame.getId();
+        }
+        
+        // Load existing game
+        model.addAttribute("game", gameService.getGameById(gameId));
         return "games/play";
     }
 }
