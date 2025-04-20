@@ -30,4 +30,21 @@ public class GameService {
         }
         return gameRepository.findAll();
     }
+
+    public Game getGameById(Long id) {
+        return gameRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Game not found"));
+    }
+
+    public Game makeMove(Long gameId, String from, String to) {
+        // TODO: Implement move validation and update game state
+        Game game = getGameById(gameId);
+        return gameRepository.save(game);
+    }
+
+    public Game resignGame(Long gameId, String player) {
+        Game game = getGameById(gameId);
+        game.setStatus(Game.GameStatus.FINISHED);
+        return gameRepository.save(game);
+    }
 }

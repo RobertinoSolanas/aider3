@@ -1,0 +1,73 @@
+.checkers-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 500px;
+    height: 500px;
+    margin: 20px auto;
+    border: 2px solid #333;
+}
+
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.square.light {
+    background-color: #f0d9b5;
+}
+
+.square.dark {
+    background-color: #b58863;
+}
+
+.piece {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.piece.white {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.piece.black {
+    background-color: #333;
+    border: 1px solid #000;
+}
+
+.piece.king::after {
+    content: "♔";
+    position: absolute;
+    font-size: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.piece.selected {
+    box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.7);
+}
+
+.valid-move {
+    box-shadow: inset 0 0 10px 5px rgba(0, 255, 0, 0.5);
+}
+
+.game-info {
+    margin: 20px 0;
+    padding: 10px;
+    background: #eee;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.game-controls {
+    margin-top: 20px;
+    text-align: center;
+}
