@@ -10,30 +10,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FourCheckerBoardGame {
+public class FourCheckerBoardGame extends Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String playerWhite;
-    private String playerBlack;
-    
-    @Enumerated(EnumType.STRING)
-    private GameStatus status;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "game", fetch = FetchType.EAGER)
-    private List<Piece> pieces;
-    
-    @Enumerated(EnumType.STRING)
-    private Color currentTurn;
     
     public enum GameStatus {
         ACTIVE, FINISHED
     }
     
-    public enum Color {
-        WHITE, BLACK
-    }
 
     public boolean isPositionValid(String position) {
         if (position == null || position.length() != 2) {
