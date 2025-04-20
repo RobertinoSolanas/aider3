@@ -31,7 +31,7 @@ public class Aider3Rest {
         })
     @GetMapping("/echo")
     public String echo(
-        @Parameter(description = "The string to echo back", example = "Hello World!")
+        @Parameter(description = "The string to echo back", example = "Hello World2!")
         @RequestParam String value) {
         return value;
     }

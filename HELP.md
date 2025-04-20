@@ -29,13 +29,13 @@ If you manually switch to a different parent and actually want the inheritance, 
 # aider --model deepseek/deepseek-chat
 
 # GIT
-# git add .
-# git commit -m "spring-boot"
-# git push
+git add .
+git commit -m "spring-boot"
+git push
 
 # spring-boot
-# mvn clean install
-# mvn spring-boot:run
+mvn clean install
+mvn spring-boot:run
 
 # application
 # http://localhost:8081/api/swagger-ui.html
